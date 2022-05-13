@@ -15,6 +15,7 @@ public class Orden {
     private Date fechaRecibida;
     private double  total;
     private String status;
+    private int totall;
 
     public Orden() {
     }
