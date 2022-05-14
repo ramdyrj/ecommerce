@@ -14,17 +14,37 @@ public class Producto {
     private double precio;
     private double cantidad;
 
-    public Producto() {
 
-    }
+    @ManyToOne
+    private Usuario usuario;
 
-    public Producto(int id, String nombre, String descripcion, double precio, double cantidad) {
+
+
+
+    public Producto(int id, String nombre, String descripcion, double precio, double cantidad, Usuario usuario) {
         this.id = id;
         this.nombre = nombre;
         this.descripcion = descripcion;
         this.precio = precio;
         this.cantidad = cantidad;
+        this.usuario = usuario;
     }
+
+    public Usuario getUsuario() {
+        return usuario;
+    }
+
+    public void setUsuario(Usuario usuario) {
+        this.usuario = usuario;
+    }
+
+
+
+    public Producto() {
+
+    }
+
+
 
     public int getId() {
         return id;

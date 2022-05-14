@@ -17,17 +17,47 @@ public class Orden {
     private String status;
 
 
-    public Orden() {
-    }
+    @ManyToOne
+    private Usuario usuario;
 
-    public Orden(int id, String numero, Date fechaCreacion, Date fechaRecibida, double total, String status) {
+
+    @OneToOne(mappedBy = "orden")
+    private DetalleOrden detalle;
+
+
+
+
+    public Orden(int id, String numero, Date fechaCreacion, Date fechaRecibida, double total, String status, Usuario usuario, DetalleOrden detalle) {
         this.id = id;
         this.numero = numero;
         this.fechaCreacion = fechaCreacion;
         this.fechaRecibida = fechaRecibida;
         this.total = total;
         this.status = status;
+        this.usuario = usuario;
+        this.detalle = detalle;
     }
+
+    public Usuario getUsuario() {
+        return usuario;
+    }
+
+    public void setUsuario(Usuario usuario) {
+        this.usuario = usuario;
+    }
+
+    public DetalleOrden getDetalle() {
+        return detalle;
+    }
+
+    public void setDetalle(DetalleOrden detalle) {
+        this.detalle = detalle;
+    }
+
+    public Orden() {
+    }
+
+
 
     public String getStatus() {
         return status;

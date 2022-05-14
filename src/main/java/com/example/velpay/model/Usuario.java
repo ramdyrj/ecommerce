@@ -1,6 +1,7 @@
 package com.example.velpay.model;
 
 import javax.persistence.*;
+import java.util.List;
 
 @Entity
 @Table(name = "usuarios")
@@ -11,14 +12,30 @@ public class Usuario {
     private int id;
     private String nombre;
     private String username;
-    private String  password;
+    private String password;
     private String direccion;
     private String email;
     private String telefono;
     private String tipo;
 
+    public List<Orden> getOrdenes() {
+        return ordenes;
+    }
 
-    public Usuario(int id, String nombre, String username, String password, String direccion, String email, String telefono, String tipo) {
+    public void setOrdenes(List<Orden> ordenes) {
+        this.ordenes = ordenes;
+    }
+
+    @OneToMany(mappedBy = "usuario")
+    private List<Producto> productos;
+
+    @OneToMany(mappedBy = "usuario")
+    private List<Orden> ordenes;
+
+
+
+
+    public Usuario(int id, String nombre, String username, String password, String direccion, String email, String telefono, String tipo, List<Producto> productos, List<Orden> ordenes) {
         this.id = id;
         this.nombre = nombre;
         this.username = username;
@@ -27,7 +44,19 @@ public class Usuario {
         this.email = email;
         this.telefono = telefono;
         this.tipo = tipo;
+        this.productos = productos;
+        this.ordenes = ordenes;
     }
+
+    public List<Producto> getProductos() {
+        return productos;
+    }
+
+    public void setProductos(List<Producto> productos) {
+        this.productos = productos;
+    }
+
+
 
     public String getNombre() {
         return nombre;
