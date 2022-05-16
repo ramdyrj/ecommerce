@@ -22,4 +22,9 @@ public class OrdenService {
         return repositoryOrden.save(orden);
     }
 
+
+    public void delete(int id){
+        repositoryOrden.deleteById(id);
+    }
+
 }
