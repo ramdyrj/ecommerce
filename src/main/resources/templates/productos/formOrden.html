@@ -13,7 +13,8 @@
 
 <form th:action="@{/orden/ordenSave}" th:object="${orden}" method="post">
     <br/>
-    <select  th:field="*{status}"  class="form-select" aria-label="Default select example">
+    <label for="estatus">Estatus</label>
+    <select  th:field="*{status}"  class="form-select" id="estatus" aria-label="Default select example">
 
         <option th:value="proceso"
                 th:text="proceso"> </option>
@@ -22,8 +23,12 @@
         <option th:value="cerrada"
                 th:text="cerrada"> </option>
 
+
     </select>
-    <select  th:field="*{producto.id}"  class="form-select" aria-label="Default select example">
+
+    <br>
+    <label for="producto">Producto</label>
+    <select  th:field="*{producto.id}"  id="producto" class="form-select" aria-label="Default select example">
 
         <option th:each="data : ${productos}"
                 th:text="${data.nombre}"
@@ -40,6 +45,11 @@
         </svg>
     </button>
 </form>
+
+
+
+</form>
+
 
 
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.bundle.min.js"

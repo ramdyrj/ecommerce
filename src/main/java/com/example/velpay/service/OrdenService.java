@@ -27,4 +27,8 @@ public class OrdenService {
         repositoryOrden.deleteById(id);
     }
 
+    public List<Orden> findByStatus(String status){
+      return   repositoryOrden.findByStatus(status);
+    }
+
 }

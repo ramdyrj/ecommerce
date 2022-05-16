@@ -4,6 +4,7 @@ import com.example.velpay.model.Orden;
 import com.example.velpay.service.OrdenService;
 import com.example.velpay.service.ProductoServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -52,5 +53,13 @@ public class OrdenController {
         return "redirect:/orden/listar";
     }
 
+
+    @GetMapping("/buscar")
+    public String findByEmail(Model model, @Param(value = "status") String status) {
+        model.addAttribute("titulo", "busquedas");
+        model.addAttribute("estatus", status);
+        model.addAttribute("ordenstatus", ordenService.findByStatus(status));
+        return "busqueda";
+    }
 
 }

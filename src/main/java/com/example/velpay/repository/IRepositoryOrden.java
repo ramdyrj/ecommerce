@@ -10,6 +10,6 @@ import java.util.List;
 @Repository
 public interface IRepositoryOrden extends JpaRepository<Orden, Integer> {
 
-
+       public  List<Orden> findByStatus(String status);
 
 }
