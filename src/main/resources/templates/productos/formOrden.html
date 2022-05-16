@@ -23,7 +23,7 @@
                 th:text="cerrada"> </option>
 
     </select>
-    <select  th:field="*{producto}"  class="form-select" aria-label="Default select example">
+    <select  th:field="*{producto.id}"  class="form-select" aria-label="Default select example">
 
         <option th:each="data : ${productos}"
                 th:text="${data.nombre}"

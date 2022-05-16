@@ -39,6 +39,7 @@ public class OrdenController {
     @GetMapping("/listar")
     public String findAll(Model model){
         model.addAttribute("title", "Ordenes");
+        model.addAttribute("productos", productoService.findAll());
         model.addAttribute("ordenes", ordenService.findAll());
         return "productos/ordenes";
     }

@@ -17,6 +17,9 @@ public class Orden {
     private double  total;
     private String status;
 
+    @OneToOne
+    private Producto producto;
+
 
    @ManyToOne
    private Usuario usuario;
@@ -26,14 +29,11 @@ public class Orden {
     private DetalleOrden detalle;
 
 
-    @OneToMany(mappedBy = "orden")
-    private List<Producto> producto;
-
-    public List<Producto> getProducto() {
+    public Producto getProducto() {
         return producto;
     }
 
-    public void setProducto(List<Producto> producto) {
+    public void setProducto(Producto producto) {
         this.producto = producto;
     }
 
