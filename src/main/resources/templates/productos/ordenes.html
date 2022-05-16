@@ -23,14 +23,16 @@
             <thead>
             <tr>
                 <th scope="col">#</th>
-                <th scope="col">nombre</th>
-                <th scope="col">Descripcion</th>
+                <th scope="col">Status</th>
+                <th scope="col">Producto</th>
 
             </tr>
             </thead>
             <tbody>
             <tr th:each="data: ${ordenes}">
                 <td th:text="${data.id}"></td>
+                <td th:text="${data.status}"></td>
+                <td th:text="${data.producto.n}"></td>
 
 
                 <td>
