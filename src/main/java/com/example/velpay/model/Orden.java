@@ -2,6 +2,7 @@ package com.example.velpay.model;
 
 import javax.persistence.*;
 import java.util.Date;
+import java.util.List;
 
 @Entity
 @Table(name="ordenes")
@@ -17,17 +18,26 @@ public class Orden {
     private String status;
 
 
-    @ManyToOne
-    private Usuario usuario;
+   @ManyToOne
+   private Usuario usuario;
 
 
     @OneToOne(mappedBy = "orden")
     private DetalleOrden detalle;
 
 
+    @OneToMany(mappedBy = "orden")
+    private List<Producto> producto;
 
+    public List<Producto> getProducto() {
+        return producto;
+    }
 
-    public Orden(int id, String numero, Date fechaCreacion, Date fechaRecibida, double total, String status, Usuario usuario, DetalleOrden detalle) {
+    public void setProducto(List<Producto> producto) {
+        this.producto = producto;
+    }
+
+    public Orden(int id, String numero, Date fechaCreacion, Date fechaRecibida, double total, String status, Usuario usuario, DetalleOrden detalle, Producto producto) {
         this.id = id;
         this.numero = numero;
         this.fechaCreacion = fechaCreacion;
@@ -36,6 +46,7 @@ public class Orden {
         this.status = status;
         this.usuario = usuario;
         this.detalle = detalle;
+
     }
 
     public Usuario getUsuario() {
